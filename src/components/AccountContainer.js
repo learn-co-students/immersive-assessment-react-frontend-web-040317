@@ -51,11 +51,17 @@ class AccountContainer extends Component {
   }
 
   render() {
+    const displayedTransactions = this.state.transactions
 
     return (
       <div>
-        <Search searchTerm={this.state.searchTerm} handleChange={"...add code here..."} />
-        <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
+        <Search
+          searchTerm={this.state.searchTerm}
+          handleChange={"...add code here..."}
+        />
+        <TransactionsList
+          transactions={displayedTransactions}
+        />
       </div>
     )
   }
