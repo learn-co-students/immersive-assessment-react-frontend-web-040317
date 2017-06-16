@@ -44,17 +44,35 @@ class AccountContainer extends Component {
         }
       ]
     }
+
+    this.displayTransactions = this.displayTransactions.bind(this)
   }
 
+  componentDidMount(){
+    fetch('https://boiling-brook-94902.herokuapp.com/transactions')
+          .then(response => response.json())
+          .then(data => this.setState({transactions: data}))
+  }
+
+  displayTransactions(){
+    return(
+    this.state.transactions.map((trans => <TransactionsList transId={trans.id} postedAt={trans.posted_at} description={trans.description} category={trans.category} amount={trans.amount}/>)
+
+
+  ))}
+
   handleChange(event) {
-    // your code here
+    event.preventDefault()
   }
 
   render() {
 
     return (
       <div>
-        <Search searchTerm={this.state.searchTerm} handleChange={"...add code here..."} />
+        <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange.bind(this)} />
+        <div className="show-tasks">
+            <ul>{this.displayTransactions()} </ul>
+        </div>
         <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
       </div>
     )

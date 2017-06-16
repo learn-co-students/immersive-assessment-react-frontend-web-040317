@@ -1,6 +1,7 @@
 import React from 'react'
+import Transaction from './Transaction'
 
-const TransactionsList = () => {
+const TransactionsList = (props) => {
 
   return (
     <table className="ui celled striped padded table">
@@ -8,22 +9,22 @@ const TransactionsList = () => {
         <tr>
           <th>
             <h3 className="ui center aligned header">
-              Posted At
+            {props.postedAt}
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Description
+            {props.description}
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Category
+            {props.category}
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Amount
+            {props.amount}
             </h3>
           </th>
         </tr>
