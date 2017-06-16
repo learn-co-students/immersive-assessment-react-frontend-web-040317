@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import TransactionsList from './TransactionsList'
-import Search from './Search'
+import TransactionsList from '../components/TransactionsList'
+import Search from '../components/Search'
+import { TransactionsAdapter } from '../adapters'
 
 class AccountContainer extends Component {
 
@@ -44,17 +45,27 @@ class AccountContainer extends Component {
         }
       ]
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    // your code here
+    this.setState({
+      searchTerm: event.target.value
+    })
+  }
+
+  componentDidMount(){
+    TransactionsAdapter.all()
+      .then(transactions => this.setState({
+          transactions: transactions
+        })
+      )
   }
 
   render() {
-
     return (
       <div>
-        <Search searchTerm={this.state.searchTerm} handleChange={"...add code here..."} />
+        <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
         <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
       </div>
     )
