@@ -1,6 +1,9 @@
 import React from 'react'
+import Transaction from './Transaction'
+import Search from './Search'
 
-const TransactionsList = () => {
+
+export default function TransactionsList(props) {
 
   return (
     <table className="ui celled striped padded table">
@@ -28,11 +31,11 @@ const TransactionsList = () => {
           </th>
         </tr>
 
-        {"... your code here..."}
+        {props.transactions.map(transaction => <Transaction eachTrans={transaction}/>)}
+        // {props.searchTerm.filter(term => )}
+
 
       </tbody>
     </table>
   )
 }
-
-export default TransactionsList
