@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TransactionsList from './TransactionsList'
+import TransactionsList from './TransactionsList.js'
 import Search from './Search'
 import {fetchTransactions} from '../api/index.js'
 
