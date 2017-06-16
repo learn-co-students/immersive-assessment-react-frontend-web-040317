@@ -38,6 +38,8 @@ You can approach this any way you would like but below is a reasonable approach 
 4) Using the state of the user input and the list of transactions, figure out how to render only the transactions that include the entered text in either the *description* or *category*
 
 
+
+
 ## Criteria
 
 We’ll be evaluating your code based on the following criteria:
