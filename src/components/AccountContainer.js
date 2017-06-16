@@ -18,6 +18,7 @@ class AccountContainer extends Component {
     this.fetchTransactions = this.fetchTransactions.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.filterTransactions = this.filterTransactions.bind(this)
+    this.termCheck = this.termCheck.bind(this)
   }
 
   componentDidMount(){
@@ -32,22 +33,28 @@ class AccountContainer extends Component {
 
   handleChange(event) {
     this.setState( {searchTerm: event.target.value})
-    // this.termCheck()
+    // this.termCheck(this.state.searchTerm, event.target.value)
     this.filterTransactions(this.state.searchTerm)
   }
 
   filterTransactions(searchTerm){
     let filteredTrans = this.state.transactions.filter( (trans) =>
-      trans.category.toLowerCase().includes(searchTerm.toLowerCase()) )
+      trans.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      trans.description.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     this.setState({
       transactions: filteredTrans
     })
+  }
+
+  termCheck(){
 
   }
 
 
-  render() {
 
+  render() {
+    let filterTransactions = this.props.transactions
     return (
       <div>
         <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
