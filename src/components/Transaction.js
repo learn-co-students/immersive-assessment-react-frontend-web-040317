@@ -1,14 +1,12 @@
 import React from 'react'
 
-const Transaction = () => {
+export default function Transaction(transaction) {
   return (
     <tr>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
+      <td>{transaction.posted_at}</td>
+      <td>{transaction.description}</td>
+      <td>{transaction.category}</td>
+      <td>{transaction.amount}</td>
     </tr>
   )
 }
-
-export default Transaction
