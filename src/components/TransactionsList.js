@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Transaction from './Transaction'
 
 export default class TransactionsList extends Component {
 render() {
@@ -29,7 +30,7 @@ render() {
         </tr>
 
         {this.props.transactions.map(transaction => {
-          return <tr key={transaction.id}><td>{transaction.posted_at}</td><td>{transaction.description}</td><td>{transaction.category}</td><td>{transaction.amount}</td></tr>
+          return <Transaction key={transaction.id} transaction={transaction}/>
         })}
 
       </tbody>
