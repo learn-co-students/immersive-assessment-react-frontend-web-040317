@@ -63,7 +63,6 @@ class AccountContainer extends Component {
   }
 
   render() {
-
     return (
       <div>
         <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
