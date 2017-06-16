@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TransactionsList from './TransactionsList'
 import Search from './Search'
+import { TransactionsAdapter } from '../adapters'
 
 class AccountContainer extends Component {
 
@@ -54,8 +55,7 @@ class AccountContainer extends Component {
   }
 
   componentDidMount(){
-    fetch(`https://boiling-brook-94902.herokuapp.com/transactions`)
-      .then(response => response.json())
+    TransactionsAdapter.all()
       .then(transactions => this.setState({
           transactions: transactions
         })
