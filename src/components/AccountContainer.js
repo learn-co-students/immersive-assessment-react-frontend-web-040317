@@ -42,20 +42,61 @@ class AccountContainer extends Component {
           category: "Coffee",
           amount: 365
         }
-      ]
+      ],
+      filteredTransactions: [{
+        id: 5,
+        posted_at: "neverhappened",
+        description: "fake",
+        category: "unreal",
+        amount: 40
+      }]
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.filterTransactionsList = this.filterTransactionsList.bind(this)
   }
 
   handleChange(event) {
-    // your code here
+    this.setState({
+      searchTerm: event.target.value
+    })
+    this.filterTransactionsList(event.target.value)
+
+  }
+
+  filterTransactionsList(query){
+
+    let temp =  this.state.transactions.filter(
+        trans => trans.description.toLowerCase().includes(query.toLowerCase()) || trans.category.toLowerCase().includes(query.toLowerCase()))
+
+    this.setState({
+      filteredTransactions: temp
+    })
+
+
+  }
+
+  isListFiltered(){
+    if (this.state.searchTerm.length !== 0){
+      return this.state.filteredTransactions
+    }
+    return this.state.transactions
+  }
+
+  componentDidMount() {
+    fetch('https://boiling-brook-94902.herokuapp.com/transactions')
+    .then( response => response.json() )
+    .then( data => {
+      this.setState(
+        {transactions: data})
+    })
   }
 
   render() {
-
     return (
       <div>
-        <Search searchTerm={this.state.searchTerm} handleChange={"...add code here..."} />
-        <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
+        <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
+
+        { (this.state.searchTerm.length > 0 && this.state.filteredTransactions.length === 0) ? <h1>Your Search Returned No Results</h1> : <TransactionsList transactions={this.isListFiltered()} searchTerm={this.state.searchTerm} /> }
       </div>
     )
   }
