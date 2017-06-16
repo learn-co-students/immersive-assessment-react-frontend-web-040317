@@ -36,7 +36,7 @@ const TransactionsList = (props) => {
         </tr>
 
         {filteredList.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)}
-
+        
       </tbody>
     </table>
   )
