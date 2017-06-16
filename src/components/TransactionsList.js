@@ -1,7 +1,23 @@
 import React from 'react'
 
-const TransactionsList = () => {
-
+const TransactionsList = (props) => {
+  
+  let adList = null
+  if (props.filtered.length > 0 ) {
+    adList = props.filtered.map( (trans) =>  <tr key={trans.id}>
+          <td>{trans.posted_at}</td>
+          <td>{trans.description}</td> 
+          <td>{trans.category}</td>
+         <td>{trans.amount}</td>
+       </tr>)
+  } else {
+    adList = props.transactions.map( (trans) =>  <tr key={trans.id}>
+          <td>{trans.posted_at}</td>
+          <td>{trans.description}</td> 
+          <td>{trans.category}</td>
+         <td>{trans.amount}</td>
+       </tr>)
+  }
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -27,8 +43,8 @@ const TransactionsList = () => {
             </h3>
           </th>
         </tr>
-
-        {"... your code here..."}
+      
+       {adList}
 
       </tbody>
     </table>
