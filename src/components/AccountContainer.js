@@ -4,12 +4,14 @@ import Search from './Search'
 
 class AccountContainer extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     // we have provided this default state for you,
     // use this to get the functionality working
     // and then replace the default transactions with a call to the API
+    const url = 'https://boiling-brook-94902.herokuapp.com/transactions'
+
 
     this.state = {
       searchTerm: '',
@@ -44,7 +46,20 @@ class AccountContainer extends Component {
         }
       ]
     }
+    const data = this.getsData(url)
   }
+
+
+  getsData(url) {
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"}
+    })
+    .then(res => res.toJSON)
+    .then(res => console.log(res))
+  }
+
 
   handleChange(event) {
     // your code here
@@ -55,7 +70,7 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search searchTerm={this.state.searchTerm} handleChange={"...add code here..."} />
-        <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
+        <TransactionsList getsData={this.getsData} searchTerm={this.state.searchTerm} />
       </div>
     )
   }
