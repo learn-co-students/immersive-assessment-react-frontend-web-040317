@@ -23,7 +23,7 @@ class AccountContainer extends Component {
   }
 
   handleChange(searchTerm) {
-    this.setState({ searchTerm: searchTerm})
+    this.setState({ searchTerm: searchTerm })
   }
 
   render() {

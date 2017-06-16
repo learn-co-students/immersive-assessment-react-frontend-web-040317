@@ -29,14 +29,11 @@ const TransactionsList = (props) => {
           </th>
         </tr>
 
-        {props.transactions.map(function(t) {
-          if (props.searchTerm === '') {
-            return( <Transaction transaction={t} />)
-          }
-
+        {props.transactions.map(function(t, index) {
           if (t.description.includes(props.searchTerm) || t.category.includes(props.searchTerm)) {
-            return( <Transaction transaction={t} />)
+            return( <Transaction transaction={t} key={index}/>)
           }
+          return null
         })}
 
       </tbody>
