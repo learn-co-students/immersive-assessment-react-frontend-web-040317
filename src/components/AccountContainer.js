@@ -96,7 +96,7 @@ class AccountContainer extends Component {
       <div>
         <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
 
-        { (this.state.searchTerm.length > 0 && this.state.filteredTransactions.length === 0) ? <h1>Your Search Returned No Results</h1> : <TransactionsList transactions={this.isListFiltered()} searchTerm={this.state.searchTerm} />}
+        { (this.state.searchTerm.length > 0 && this.state.filteredTransactions.length === 0) ? <h1>Your Search Returned No Results</h1> : <TransactionsList transactions={this.isListFiltered()} searchTerm={this.state.searchTerm} /> }
       </div>
     )
   }
