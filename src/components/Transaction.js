@@ -1,12 +1,15 @@
 import React from 'react'
 
-const Transaction = () => {
+const Transaction = (props) => {
+
+  let dateConvert = new Date(props.transaction.posted_at).toLocaleString()
+
   return (
     <tr>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
+      <td>{dateConvert}</td>
+      <td>{props.transaction.description}</td>
+      <td>{props.transaction.category}</td>
+      <td>{props.transaction.amount}</td>
     </tr>
   )
 }
