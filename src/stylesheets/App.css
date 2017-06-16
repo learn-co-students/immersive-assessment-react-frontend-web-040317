@@ -9,7 +9,10 @@
 
 
 .App-header {
-  background-color: #222;
   padding: 20px;
   color: white;
+}
+
+#header {
+  background-color: cyan;
 }
