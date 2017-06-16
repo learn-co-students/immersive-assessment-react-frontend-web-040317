@@ -7,10 +7,11 @@ class App extends Component {
   render() {
     return (
       <div className="ui raised segment">
-        <div className="ui segment violet inverted">
-          <h2>The Royal Bank of Flatiron</h2>
+        <div className="ui segment" id="header">
+          <h1>The Royal Bank of Flatiron</h1>
+          <i className="money icon"></i><i className="money icon"></i><i className="money icon"></i><i className="money icon"></i><i className="money icon"></i>
         </div>
-        
+
         <AccountContainer />
 
       </div>
