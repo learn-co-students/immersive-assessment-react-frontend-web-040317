@@ -28,12 +28,18 @@ const TransactionsList = (props) => {
             </h3>
           </th>
         </tr>
-        {props.transactions.filter(transaction => transaction.description.includes(props.searchTerm))
-          .map(transaction => {
+        {
+          props.transactions.filter(transaction => {
             return(
-              <Transaction key={transaction.id} transaction={transaction} />
+              transaction.description.includes(props.searchTerm) ||
+              transaction.category.includes(props.searchTerm)
             )
           })
+            .map(transaction => {
+              return(
+                <Transaction key={transaction.id} transaction={transaction} />
+              )
+            })
         }
 
       </tbody>
