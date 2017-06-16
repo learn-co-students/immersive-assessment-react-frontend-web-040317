@@ -32,8 +32,8 @@ const renderTransactions = (props) => {
   return(
     props.transactions.filter(transaction => {
       return(
-        transaction.description.includes(props.searchTerm) ||
-        transaction.category.includes(props.searchTerm)
+        transaction.description.toLowerCase().includes(props.searchTerm.toLowerCase()) ||
+        transaction.category.toLowerCase().includes(props.searchTerm.toLowerCase())
       )
     })
       .map(transaction => {
