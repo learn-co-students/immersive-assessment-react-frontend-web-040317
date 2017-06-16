@@ -19,19 +19,19 @@ class AccountContainer extends Component {
   componentDidMount() {
     fetch(url)
       .then(resp => resp.json())
-      .then(transactions => this.setState({ transactions: transactions}))
+      .then(transactions => this.setState({ transactions }))
   }
 
   handleChange(searchTerm) {
-    this.setState({ searchTerm: searchTerm })
+    this.setState({ searchTerm })
   }
 
   render() {
 
     return (
       <div>
-        <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
-        <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm} />
+        <Search searchTerm={ this.state.searchTerm } handleChange={ this.handleChange } />
+        <TransactionsList transactions={ this.state.transactions } searchTerm={ this.state.searchTerm } />
       </div>
     )
   }
