@@ -1,10 +1,9 @@
 import React from 'react'
 import Transaction from './Transaction'
-import Search from './Search'
 
 
 export default function TransactionsList(props) {
-
+  
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -30,10 +29,7 @@ export default function TransactionsList(props) {
             </h3>
           </th>
         </tr>
-
-        {props.transactions.map(transaction => <Transaction eachTrans={transaction}/>)}
-        // {props.searchTerm.filter(term => )}
-
+        {props.transactions.map(transaction => <Transaction eachTrans={transaction} key={transaction.id}/>)}
 
       </tbody>
     </table>

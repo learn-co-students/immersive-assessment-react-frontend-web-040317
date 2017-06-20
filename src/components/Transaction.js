@@ -3,10 +3,10 @@ import React from 'react'
 const Transaction = (props) => {
   return (
     <tr>
-      <td>{props.posted_at}</td>
-      <td>{props.description}</td>
-      <td>{props.category}</td>
-      <td>{props.amount}</td>
+      <td>{props.eachTrans.posted_at}</td>
+      <td>{props.eachTrans.description}</td>
+      <td>{props.eachTrans.category}</td>
+      <td>{props.eachTrans.amount}</td>
     </tr>
   )
 }
